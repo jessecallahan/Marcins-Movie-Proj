@@ -2,6 +2,7 @@ import React from "react";
 import "../styles.css";
 import Search from './Search.js'
 import MovieList from './MovieList.js'
+import MovieDetail from './MovieDetail.js'
 
 
 class MovieControl extends React.Component {
@@ -11,10 +12,31 @@ class MovieControl extends React.Component {
       error: null,
       isLoaded: false,
       movies: [],
-      call: 'polish'
+      call: 'seattle',
+      selectedMovie: null,
+      MovieCard: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.makeApiCall = this.makeApiCall.bind(this)
+  }
+
+  handleClick = () => {
+    if (this.state.selectedMovie != null) {
+      this.setState({
+        MovieCard: false,
+        selectedMovie: null
+      });
+    } else {
+      this.setState(prevState => ({
+        MovieCard: !prevState.MovieCard,
+      }));
+    }
+  }
+
+
+  handleChangingSelectedMovie = (id) => {
+    const selectedMovie = this.state.movies.filter(movie => movie.id === id)[0];
+    this.setState({ selectedMovie: selectedMovie });
   }
 
 
@@ -39,9 +61,9 @@ class MovieControl extends React.Component {
 
   }
 
-  // componentDidMount() {
-  //   this.makeApiCall()
-  // }
+  componentDidUpdate() {
+    this.makeApiCall()
+  }
 
   handleChange(){
 
@@ -50,19 +72,37 @@ class MovieControl extends React.Component {
 
   handleSubmit(event) {
     this.setState({ call: event.target.name.value });
-    this.makeApiCall()
     event.preventDefault();
+  }
+
+  handleEditClick = () => {
+    this.setState({ editing: true });
   }
 
 
   render() {
     console.log(this.state)
-    return (
-      <div>
-        <Search formSubmissionHandler={this.handleSubmit} onChange={this.handleChange} />
-        <MovieList movies={this.state.movies} isLoaded={this.state.isLoaded} error={this.state.error} />
 
-      </div>
+    let currentlyVisibleState = null;
+   
+if (this.state.selectedMovie != null)  {
+  currentlyVisibleState =  <MovieDetail  movie={this.state.selectedMovie} handleClick={this.handleClick} />
+
+} else {
+    currentlyVisibleState = 
+    <div>
+    <Search formSubmissionHandler={this.handleSubmit} onChange={this.handleChange} />
+    <MovieList movies={this.state.movies}
+      onMovieSelection={this.handleChangingSelectedMovie} isLoaded={this.state.isLoaded} error={this.state.error} />
+    </div>
+}
+    return (
+      <React.Fragment>
+     {currentlyVisibleState}
+    
+     </React.Fragment>
+
+    
     )
   }
 }

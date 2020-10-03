@@ -1,4 +1,10 @@
 import React from 'react'
+import Movie from './Movie.js'
+import PropTypes from "prop-types";
+
+
+// import CardDeck from 'react-bootstrap/CardDeck'
+// import Card from 'react-bootstrap/Card'
 
 function MovieList(props) {
   const movies = props.movies;
@@ -12,21 +18,28 @@ function MovieList(props) {
   } else {
     return (
       <React.Fragment>
-        <h1>Movie</h1>
-        <ul>
-          {movies.map((movie, index) =>
-            <li key={index}>
-              <h3>{movie.title}</h3>
-              <p>{movie.overview}</p>
-              <img className="photo" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="movie path" />
-              <p>{movie.popularity}</p>
-              <p>{movie.date}</p>
-            </li>
-          )}
-        </ul>
-      </React.Fragment>
-    );
+          {props.movies.map((movie) =>
+          <Movie 
+            whenMovieClicked={props.onMovieSelection}
+            title={movie.title}
+            overview={movie.overview}
+            poster_path={movie.poster_path}
+            popularity={movie.popularity}
+            date={movie.date} 
+            id={movie.id}/>
+            )}
+            
+          </React.Fragment>
+          );
   }
+        
 }
+      
+
+MovieList.propTypes = {
+  movies: PropTypes.array,
+  onMovieSelection: PropTypes.func
+};
 
 export default MovieList;
+
