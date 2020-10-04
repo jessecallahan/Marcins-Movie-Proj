@@ -81,7 +81,6 @@ class MovieControl extends React.Component {
 
 
   render() {
-    console.log(this.state)
 
     let currentlyVisibleState = null;
    

@@ -2,34 +2,44 @@ import React from "react";
 import PropTypes from "prop-types";
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+
 
 
 function Movie(props) {
   return (
     <React.Fragment>
-      <Col>
-        <Card bg='success' style={{
-          width: "18rem",
+    
+       
+        <Card onClick={() => props.whenMovieClicked(props.id)} style={{
+          width: "100%",
           overflow: "hidden",
           borderRadius: "15px",
           marginTop: "15px",
           marginBottom: "15px",
         }}>
-          <div onClick={() => props.whenMovieClicked(props.id)}>
+        
 
-
-            <Card.Body>
+          <Row>
+      
+        <Col>
+          <img className="photo" src={`https://image.tmdb.org/t/p/w500/${props.poster_path}`} alt="movie path" />
+          </Col>
+          <Col>
+          <Card.Body>
               <Card.Title>{props.title}</Card.Title>
               <Card.Text>
         <p>{props.overview}</p>
-          <img className="photo" src={`https://image.tmdb.org/t/p/w500/${props.poster_path}`} alt="movie path" />
           <p>{props.popularity}</p>
           <p>{props.date}</p>
               </Card.Text>
             </Card.Body>
-       </div>
-        </Card>
-      </Col>
+            </Col>
+     
+       </Row>
+      </Card>
+     
+     
 
     </React.Fragment >
   );
