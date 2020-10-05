@@ -1,9 +1,8 @@
 import React from "react";
 import "../styles.css";
-import Search from './Search.js'
-import MovieList from './MovieList.js'
-import MovieDetail from './MovieDetail.js'
-
+import Search from "./Search.js";
+import MovieList from "./MovieList.js";
+import MovieDetail from "./MovieDetail.js";
 
 class MovieControl extends React.Component {
   constructor(props) {
@@ -12,62 +11,57 @@ class MovieControl extends React.Component {
       error: null,
       isLoaded: false,
       movies: [],
-      call: 'seattle',
+      call: "seattle",
       selectedMovie: null,
-      MovieCard: false
+      MovieCard: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.makeApiCall = this.makeApiCall.bind(this)
+    this.makeApiCall = this.makeApiCall.bind(this);
   }
 
   handleClick = () => {
     if (this.state.selectedMovie != null) {
       this.setState({
         MovieCard: false,
-        selectedMovie: null
+        selectedMovie: null,
       });
     } else {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         MovieCard: !prevState.MovieCard,
       }));
     }
-  }
-
+  };
 
   handleChangingSelectedMovie = (id) => {
-    const selectedMovie = this.state.movies.filter(movie => movie.id === id)[0];
+    const selectedMovie = this.state.movies.filter(
+      (movie) => movie.id === id
+    )[0];
     this.setState({ selectedMovie: selectedMovie });
-  }
-
+  };
 
   makeApiCall = () => {
-    let call = this.state.call
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${call}&page=1&include_adult=false`)
-      .then(response => response.json())
-      .then(
-        (jsonifiedResponse) => {
-          this.setState({
-            isLoaded: true,
-            movies: jsonifiedResponse.results
-          });
-        })
+    let call = this.state.call;
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${call}&page=1&include_adult=false`
+    )
+      .then((response) => response.json())
+      .then((jsonifiedResponse) => {
+        this.setState({
+          isLoaded: true,
+          movies: jsonifiedResponse.results,
+        });
+      })
       .catch((error) => {
         this.setState({
           isLoaded: true,
-          error
+          error,
         });
       });
-
-  }
+  };
 
   componentDidUpdate() {
-    this.makeApiCall()
+    this.makeApiCall();
   }
-
-  handleChange(){
-
-  }
-
 
   handleSubmit(event) {
     this.setState({ call: event.target.name.value });
@@ -76,42 +70,34 @@ class MovieControl extends React.Component {
 
   handleEditClick = () => {
     this.setState({ editing: true });
-  }
-
+  };
 
   render() {
-
     let currentlyVisibleState = null;
-   
-if (this.state.selectedMovie != null)  {
-  currentlyVisibleState =  <MovieDetail  movie={this.state.selectedMovie} handleClick={this.handleClick} />
-
-} else {
-    currentlyVisibleState = 
-    <div>
-    <Search formSubmissionHandler={this.handleSubmit} onChange={this.handleChange} />
-    <MovieList movies={this.state.movies}
-      onMovieSelection={this.handleChangingSelectedMovie} isLoaded={this.state.isLoaded} error={this.state.error} />
-    </div>
-}
-    return (
-      <React.Fragment>
-     {currentlyVisibleState}
-    
-     </React.Fragment>
-
-    
-    )
+    if (this.state.selectedMovie != null) {
+      currentlyVisibleState = (
+        <MovieDetail
+          movie={this.state.selectedMovie}
+          handleClick={this.handleClick}
+        />
+      );
+    } else {
+      currentlyVisibleState = (
+        <div>
+          <Search
+            formSubmissionHandler={this.handleSubmit}
+          />
+          <MovieList
+            movies={this.state.movies}
+            onMovieSelection={this.handleChangingSelectedMovie}
+            isLoaded={this.state.isLoaded}
+            error={this.state.error}
+          />
+        </div>
+      );
+    }
+    return <React.Fragment>{currentlyVisibleState}</React.Fragment>;
   }
 }
 
-
 export default MovieControl;
-
-
-
-
-
-
-
-
