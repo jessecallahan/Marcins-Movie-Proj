@@ -41,10 +41,8 @@ class MovieControl extends React.Component {
 
 
   makeApiCall = () => {
-    console.log(process.env.REACT_APP_API_KEY)
     let call = this.state.call
-    console.log(call)
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}c6&language=en-US&query=${call}&page=1&include_adult=false`)
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${call}&page=1&include_adult=false`)
       .then(response => response.json())
       .then(
         (jsonifiedResponse) => {
