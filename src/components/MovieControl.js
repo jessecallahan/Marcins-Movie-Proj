@@ -3,6 +3,10 @@ import "../styles.css";
 import Search from "./Search.js";
 import MovieList from "./MovieList.js";
 import MovieDetail from "./MovieDetail.js";
+// import { connect } from 'react-redux';
+// import PropTypes from "prop-types";
+import { withFirestore, isLoaded } from 'react-redux-firebase';
+import Favorites from "./Favorites"
 
 class MovieControl extends React.Component {
   constructor(props) {
@@ -73,31 +77,52 @@ class MovieControl extends React.Component {
   };
 
   render() {
-    let currentlyVisibleState = null;
-    if (this.state.selectedMovie != null) {
-      currentlyVisibleState = (
-        <MovieDetail
-          movie={this.state.selectedMovie}
-          handleClick={this.handleClick}
-        />
-      );
-    } else {
-      currentlyVisibleState = (
-        <div>
-          <Search
-            formSubmissionHandler={this.handleSubmit}
-          />
-          <MovieList
-            movies={this.state.movies}
-            onMovieSelection={this.handleChangingSelectedMovie}
-            isLoaded={this.state.isLoaded}
-            error={this.state.error}
-          />
-        </div>
-      );
+    const auth = this.props.firebase.auth();
+    if (!isLoaded(auth)) {
+      return (
+        <React.Fragment>
+          <h1>Loading...</h1>
+        </React.Fragment>
+      )
     }
-    return <React.Fragment>{currentlyVisibleState}</React.Fragment>;
+    if ((isLoaded(auth)) && (auth.currentUser == null)) {
+      return (
+        <React.Fragment>
+          <h1>You must be signed in to access the queue.</h1>
+        </React.Fragment>
+      )
+    }
+    if ((isLoaded(auth)) && (auth.currentUser != null)) {
+      let currentlyVisibleState = null;
+      if (this.state.selectedMovie != null) {
+        currentlyVisibleState = (
+          <div>
+            <MovieDetail
+              movie={this.state.selectedMovie}
+              handleClick={this.handleClick}
+            />
+            <Favorites movie={this.state.selectedMovie}
+              search={this.state.call} />
+          </div>
+        );
+      } else {
+        currentlyVisibleState = (
+          <div>
+            <Search
+              formSubmissionHandler={this.handleSubmit}
+            />
+            <MovieList
+              movies={this.state.movies}
+              onMovieSelection={this.handleChangingSelectedMovie}
+              isLoaded={this.state.isLoaded}
+              error={this.state.error}
+            />
+          </div>
+        );
+      }
+      return <React.Fragment>{currentlyVisibleState}</React.Fragment>;
+    }
   }
 }
 
-export default MovieControl;
+export default withFirestore(MovieControl);

@@ -54,6 +54,7 @@ function Signin() {
           placeholder='email' />
         <input
           type='password'
+          
           name='signinPassword'
           placeholder='Password' />
         <button type='submit'>Sign in</button>

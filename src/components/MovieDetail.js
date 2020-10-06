@@ -9,7 +9,6 @@ function MovieDetail(props) {
   const { movie } = props;
   document.body.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`;
 
-  console.log(movie);
   return (
     <div>
       <Card
