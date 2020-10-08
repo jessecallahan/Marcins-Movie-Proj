@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  background-image: url("https://www.google.com/imgres?imgurl=https%3A%2F%2Fak.picdn.net%2Fshutterstock%2Fvideos%2F18102649%2Fthumb%2F1.jpg&imgrefurl=https%3A%2F%2Fwww.shutterstock.com%2Fvideo%2Fclip-18102649-old-movie-projector-showing-film&tbnid=zo2gB5Jn18oqJM&vet=12ahUKEwia9aLNuaHsAhUKlp4KHZAHCiQQMygJegUIARDFAg..i&docid=O80sdtQx6ssoQM&w=852&h=480&q=old%20school%20movie%20projector&hl=en&ved=2ahUKEwia9aLNuaHsAhUKlp4KHZAHCiQQMygJegUIARDFAg");
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
 .App-logo {
@@ -36,5 +42,3 @@
     transform: rotate(360deg);
   }
 }
-
-

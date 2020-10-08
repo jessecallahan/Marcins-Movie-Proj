@@ -3,8 +3,16 @@ import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import placeholderImage from './Assets/placeholder.png'
+
+
 
 function Movie(props) {
+  let movieImage;
+  if(props.poster_path== null){
+    movieImage = placeholderImage;
+  } else {movieImage = `https://image.tmdb.org/t/p/w500/${props.poster_path}` }
+
   return (
     <React.Fragment>
       <Card
@@ -21,7 +29,7 @@ function Movie(props) {
           <Col>
             <img
               className="photo"
-              src={`https://image.tmdb.org/t/p/w500/${props.poster_path}`}
+              src={movieImage}
               alt="movie path"
             />
           </Col>

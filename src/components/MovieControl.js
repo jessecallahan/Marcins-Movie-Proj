@@ -72,10 +72,6 @@ class MovieControl extends React.Component {
     event.preventDefault();
   }
 
-  handleEditClick = () => {
-    this.setState({ editing: true });
-  };
-
   render() {
     const auth = this.props.firebase.auth();
     if (!isLoaded(auth)) {
@@ -88,7 +84,7 @@ class MovieControl extends React.Component {
     if ((isLoaded(auth)) && (auth.currentUser == null)) {
       return (
         <React.Fragment>
-          <h1>You must be signed in to access the queue.</h1>
+          <h1>You must be signed in to access the movie app.</h1>
         </React.Fragment>
       )
     }

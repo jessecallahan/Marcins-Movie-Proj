@@ -3,9 +3,14 @@ import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import placeholderImage from './Assets/placeholder.png'
 // import Container from 'react-bootstrap/Container'
 
 function MovieDetail(props) {
+  let movieImage;
+  if(props.poster_path== null){
+    movieImage = placeholderImage;
+  } else {movieImage = `https://image.tmdb.org/t/p/w500/${props.poster_path}` }
   const { movie } = props;
   document.body.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`;
 
@@ -29,7 +34,7 @@ function MovieDetail(props) {
             <div className="movie-detail-image">
               <Card.Img
                 variant="top"
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                src={movieImage}
                 alt="movie path"
               />
             </div>
