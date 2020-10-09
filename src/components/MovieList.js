@@ -3,6 +3,7 @@ import Movie from "./Movie.js";
 import PropTypes from "prop-types";
 import Spinner from "react-bootstrap/Spinner";
 
+
 function MovieList(props) {
   const movies = props.movies;
   const isLoaded = props.isLoaded;
@@ -38,7 +39,7 @@ function MovieList(props) {
 
 MovieList.propTypes = {
   movies: PropTypes.array,
-  onMovieSelection: PropTypes.func,
+  onMovieSelection: PropTypes.func
 };
 
 export default MovieList;

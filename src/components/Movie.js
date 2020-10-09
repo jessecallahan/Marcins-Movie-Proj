@@ -23,6 +23,7 @@ function Movie(props) {
           borderRadius: "15px",
           marginTop: "15px",
           marginBottom: "15px",
+          color: "black"
         }}
       >
         <Row>

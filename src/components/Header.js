@@ -1,18 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+
 
 function Header(){
   return (
     <React.Fragment>
-      <h1> Movie Project</h1>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/signin">Sign In</Link>
-        </li>
-      </ul>
+      <Row>
+      <Col> <h1> Movie Project</h1></Col>
+      <Col> <Link to="/">Home</Link></Col>
+      <Col> <Link to="/signin">Sign In</Link></Col>
+     
+      <Col> <Link to="/favoriteslist">Favorites List</Link></Col>
+         
+        
+        </Row>
+       
     </React.Fragment>
   );
 }

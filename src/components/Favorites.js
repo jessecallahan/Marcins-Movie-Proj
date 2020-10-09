@@ -7,8 +7,8 @@ export default function Favorites(props) {
   const user = firebase.auth().currentUser;
 
   function addToFavs() {
-    console.log("fire")
-    const objToFav = { favs: props.movie.title, whatup: "hey marcin", email: user.email, history: props.search }
+    console.log(props.movieprop.title)
+    const objToFav = { favs: props.movieprop.title, email: user.email }
     return firestore.collection(user.email + ' favorites').add(objToFav)
   }
 

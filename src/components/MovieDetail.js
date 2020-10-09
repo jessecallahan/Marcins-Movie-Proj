@@ -4,18 +4,25 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import placeholderImage from './Assets/placeholder.png'
+import Favorites from "./Favorites"
 // import Container from 'react-bootstrap/Container'
 
 function MovieDetail(props) {
-  let movieImage;
-  if(props.poster_path== null){
-    movieImage = placeholderImage;
-  } else {movieImage = `https://image.tmdb.org/t/p/w500/${props.poster_path}` }
   const { movie } = props;
-  document.body.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`;
+  let movieImage;
+  if(movie.poster_path== null){
+    movieImage = placeholderImage;
+  } else {movieImage = `https://image.tmdb.org/t/p/w500/${movie.poster_path}` }
+  
+
 
   return (
-    <div>
+    <div 
+    style={{backgroundImage:`url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover"
+
+    }}>
       <Card
         onClick={() => props.handleClick()}
         border="success"
@@ -46,6 +53,7 @@ function MovieDetail(props) {
                 {movie.overview}
                 <p>{movie.popularity}</p>
                 <p>{movie.date}</p>
+                <Favorites movieprop={movie}/>
               </Card.Text>
             </Card.Body>
           </Col>

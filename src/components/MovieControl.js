@@ -6,7 +6,10 @@ import MovieDetail from "./MovieDetail.js";
 // import { connect } from 'react-redux';
 // import PropTypes from "prop-types";
 import { withFirestore, isLoaded } from 'react-redux-firebase';
-import Favorites from "./Favorites"
+
+// import Home from "./Home"
+
+
 
 class MovieControl extends React.Component {
   constructor(props) {
@@ -15,12 +18,13 @@ class MovieControl extends React.Component {
       error: null,
       isLoaded: false,
       movies: [],
-      call: "seattle",
+      call: "predator",
       selectedMovie: null,
       MovieCard: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.makeApiCall = this.makeApiCall.bind(this);
+    this.makeHomeApiCall = this.makeApiCall.bind(this);
   }
 
   handleClick = () => {
@@ -63,9 +67,34 @@ class MovieControl extends React.Component {
       });
   };
 
-  componentDidUpdate() {
+
+  makeApiHomeCall = () => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+    )
+      .then((response) => response.json())
+      .then((jsonifiedResponse) => {
+        this.setState({
+          isLoaded: true,
+          movies: jsonifiedResponse.results,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          isLoaded: true,
+          error,
+        });
+      });
+  };
+
+
+  
+
+  componentDidUpdate(){
     this.makeApiCall();
   }
+
+ 
 
   handleSubmit(event) {
     this.setState({ call: event.target.name.value });
@@ -89,6 +118,7 @@ class MovieControl extends React.Component {
       )
     }
     if ((isLoaded(auth)) && (auth.currentUser != null)) {
+      
       let currentlyVisibleState = null;
       if (this.state.selectedMovie != null) {
         currentlyVisibleState = (
@@ -97,8 +127,7 @@ class MovieControl extends React.Component {
               movie={this.state.selectedMovie}
               handleClick={this.handleClick}
             />
-            <Favorites movie={this.state.selectedMovie}
-              search={this.state.call} />
+           
           </div>
         );
       } else {
@@ -108,15 +137,16 @@ class MovieControl extends React.Component {
               formSubmissionHandler={this.handleSubmit}
             />
             <MovieList
+             onMovieSelection={this.handleChangingSelectedMovie}
               movies={this.state.movies}
-              onMovieSelection={this.handleChangingSelectedMovie}
               isLoaded={this.state.isLoaded}
               error={this.state.error}
             />
           </div>
         );
       }
-      return <React.Fragment>{currentlyVisibleState}</React.Fragment>;
+      return <React.Fragment>
+        {currentlyVisibleState}</React.Fragment>;
     }
   }
 }

@@ -9,13 +9,14 @@ html {
 }
 
 body {
-    /* background: rgb(3, 3, 19);
-    color: white; */
+    background:black;
+    color: white;
     background-repeat: no-repeat;
     font-family: ariel;
     background-size: cover;
     height: 80%;
     width: auto;
+
 }
 
 /* .backgroundImage {
@@ -37,3 +38,4 @@ body {
   margin-top: 5%;
   margin-left: 1;
 }
+
