@@ -27,9 +27,33 @@ body {
       background-size: cover;
      */
 
+.sign-in-page{
+  background-image: url("./Assets/projector-1.jpg");
+  background-repeat: no-repeat;
+  font-family: 'Detail_Font';
+      background-size: cover;
+      margin: auto;
+      width: 50%;
+      border: 3px solid rgb(20, 25, 173);
+      padding: 10px;
+     }
+
+.MovieTitle {
+     font-family: 'Title_Font';
+     font-size: 90px;
+     color: greenyellow;
+    }
+
+    .header-style {
+      font-family: 'Title_Font';
+     font-size: 40px;
+     color: greenyellow;
+    }
 
 .card-body1 {
- color: white;
+  font-family: 'Detail_Font';
+  font-size: 30px;
+ color: greenyellow;
 }
 
 .movie-detail-image {
@@ -37,5 +61,20 @@ body {
   width: auto;
   margin-top: 5%;
   margin-left: 1;
+}
+
+@font-face {
+  font-family: 'Detail_Font';
+  src: url('./Fonts/gravtrac compressed bd.ttf') format('truetype');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Title_Font';
+  src: url('./Fonts/Reglisse.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 

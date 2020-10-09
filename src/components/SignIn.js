@@ -36,6 +36,7 @@ function Signin() {
 
   return (
     <React.Fragment>
+      <div className = "sign-in-page">
       <h1>Sign up</h1>
       <form onSubmit={doSignUp}>
         <input
@@ -63,6 +64,7 @@ function Signin() {
       </form>
       <h1>Sign Out</h1>
       <button onClick={doSignOut}>Sign out</button>
+      </div>
     </React.Fragment>
   )
 }

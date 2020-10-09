@@ -47,8 +47,7 @@ class MovieControl extends React.Component {
     this.setState({ selectedMovie: selectedMovie });
   };
 
-  makeApiCall = () => {
-    let call = this.state.call;
+  makeApiCall = (call) => {
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${call}&page=1&include_adult=false`
     )
@@ -87,14 +86,18 @@ class MovieControl extends React.Component {
       });
   };
 
-
-  
-
-  componentDidUpdate(){
-    this.makeApiCall();
+  componentDidMount(){
+    this.makeApiHomeCall();
   }
 
- 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+      if (prevState.call !== this.state.call) { 
+      this.makeApiCall(this.state.call);
+    }
+  }
+  
+
+
 
   handleSubmit(event) {
     this.setState({ call: event.target.name.value });
@@ -118,12 +121,14 @@ class MovieControl extends React.Component {
       )
     }
     if ((isLoaded(auth)) && (auth.currentUser != null)) {
-      
+      console.log(this.state.selectedMovie)
       let currentlyVisibleState = null;
       if (this.state.selectedMovie != null) {
         currentlyVisibleState = (
           <div>
+            
             <MovieDetail
+           
               movie={this.state.selectedMovie}
               handleClick={this.handleClick}
             />

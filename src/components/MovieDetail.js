@@ -9,6 +9,7 @@ import Favorites from "./Favorites"
 
 function MovieDetail(props) {
   const { movie } = props;
+
   let movieImage;
   if(movie.poster_path== null){
     movieImage = placeholderImage;
@@ -25,7 +26,6 @@ function MovieDetail(props) {
     }}>
       <Card
         onClick={() => props.handleClick()}
-        border="success"
         style={{
           height: "40rem",
           alignItems: "center",
@@ -47,12 +47,13 @@ function MovieDetail(props) {
             </div>
           </Col>
           <Col md={8}>
-            <Card.Body className="card-body1">
-              <Card.Title>{movie.title}</Card.Title>
-              <Card.Text className="card-b">
+            <Card.Body>
+              <Card.Title className="MovieTitle">{movie.title}</Card.Title>
+              <Card.Text className="card-body1">
                 {movie.overview}
-                <p>{movie.popularity}</p>
-                <p>{movie.date}</p>
+                <p></p>
+                <p>Vote Average: {movie.vote_average}/10</p>
+                <p>Release Date: {movie.release_date}</p>
                 <Favorites movieprop={movie}/>
               </Card.Text>
             </Card.Body>

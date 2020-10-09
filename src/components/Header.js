@@ -7,16 +7,18 @@ import Row from "react-bootstrap/Row";
 function Header(){
   return (
     <React.Fragment>
+        <div className="header-style" >
+
       <Row>
-      <Col> <h1> Movie Project</h1></Col>
+      <Col> <Link to="/"><h1> Movie Spective</h1></Link></Col>
       <Col> <Link to="/">Home</Link></Col>
       <Col> <Link to="/signin">Sign In</Link></Col>
      
       <Col> <Link to="/favoriteslist">Favorites List</Link></Col>
          
-        
+     
         </Row>
-       
+        </div>
     </React.Fragment>
   );
 }

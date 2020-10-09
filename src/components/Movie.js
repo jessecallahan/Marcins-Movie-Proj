@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import placeholderImage from './Assets/placeholder.png'
+import placeholderImage from '../Assets/placeholder.png'
 
 
 
 function Movie(props) {
+
   let movieImage;
   if(props.poster_path== null){
     movieImage = placeholderImage;
@@ -36,11 +37,12 @@ function Movie(props) {
           </Col>
           <Col>
             <Card.Body>
-              <Card.Title>{props.title}</Card.Title>
+            <Card.Title>{props.title}</Card.Title>
               <Card.Text>
                 <p>{props.overview}</p>
-                <p>{props.popularity}</p>
-                <p>{props.date}</p>
+                <p></p>
+                <p>Vote Average: {props.vote_average} /10</p>
+                <p>Release Date: {props.release_date}</p>
               </Card.Text>
             </Card.Body>
           </Col>
@@ -54,10 +56,12 @@ Movie.propTypes = {
   title: PropTypes.string,
   overview: PropTypes.string,
   poster_path: PropTypes.string,
-  populartiy: PropTypes.string,
+  vote_average: PropTypes.string,
   date: PropTypes.string,
   id: PropTypes.string,
-  whenMovieClicked: PropTypes.func,
+  release_date: PropTypes.string,
+  whenMovieClicked: PropTypes.func
+
 };
 
 export default Movie;
