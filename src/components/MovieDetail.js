@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import placeholderImage from './Assets/placeholder.png'
+import placeholderImage from '../Assets/placeholder.png'
 import Favorites from "./Favorites"
 // import Container from 'react-bootstrap/Container'
 

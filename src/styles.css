@@ -39,21 +39,22 @@ body {
      }
 
 .MovieTitle {
-     font-family: 'Title_Font';
-     font-size: 90px;
-     color: greenyellow;
+     font-family: 'Detail_Font';
+     font-size: 60px;
+     color: rgba(228, 24, 78, 0.858);
     }
 
     .header-style {
-      font-family: 'Title_Font';
+      font-family: 'Detail_Font';
      font-size: 40px;
-     color: greenyellow;
+     color: rgba(228, 24, 78, 0.858);
     }
+    
 
 .card-body1 {
   font-family: 'Detail_Font';
-  font-size: 30px;
- color: greenyellow;
+  font-size: 20px;
+ color:rgba(228, 24, 78, 0.858);
 }
 
 .movie-detail-image {
@@ -65,16 +66,11 @@ body {
 
 @font-face {
   font-family: 'Detail_Font';
-  src: url('./Fonts/gravtrac compressed bd.ttf') format('truetype');
+  src: url('../src/Fonts/IndubitablyNF.ttf') format('truetype');
 
   font-weight: normal;
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Title_Font';
-  src: url('./Fonts/Reglisse.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+
 

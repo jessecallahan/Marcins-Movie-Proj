@@ -8,8 +8,8 @@ export default function Favorites(props) {
 
   function addToFavs() {
     console.log(props.movieprop.title)
-    const objToFav = { favs: props.movieprop.title, email: user.email }
-    return firestore.collection(user.email + ' favorites').add(objToFav)
+    const objToFav = { favs: props.movieprop.title }
+    return firestore.collection(user.email).add(objToFav)
   }
 
   return (
