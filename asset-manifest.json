@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Marcins-Movie-Proj/static/css/main.02dacecc.chunk.css",
+    "main.js": "/Marcins-Movie-Proj/static/js/main.8a5e6061.chunk.js",
+    "main.js.map": "/Marcins-Movie-Proj/static/js/main.8a5e6061.chunk.js.map",
+    "runtime-main.js": "/Marcins-Movie-Proj/static/js/runtime-main.ba987069.js",
+    "runtime-main.js.map": "/Marcins-Movie-Proj/static/js/runtime-main.ba987069.js.map",
+    "static/css/2.d9ad5f5c.chunk.css": "/Marcins-Movie-Proj/static/css/2.d9ad5f5c.chunk.css",
+    "static/js/2.f9c66a23.chunk.js": "/Marcins-Movie-Proj/static/js/2.f9c66a23.chunk.js",
+    "static/js/2.f9c66a23.chunk.js.map": "/Marcins-Movie-Proj/static/js/2.f9c66a23.chunk.js.map",
+    "index.html": "/Marcins-Movie-Proj/index.html",
+    "precache-manifest.f64097873976f9361983b031220d4fa0.js": "/Marcins-Movie-Proj/precache-manifest.f64097873976f9361983b031220d4fa0.js",
+    "service-worker.js": "/Marcins-Movie-Proj/service-worker.js",
+    "static/css/2.d9ad5f5c.chunk.css.map": "/Marcins-Movie-Proj/static/css/2.d9ad5f5c.chunk.css.map",
+    "static/css/main.02dacecc.chunk.css.map": "/Marcins-Movie-Proj/static/css/main.02dacecc.chunk.css.map",
+    "static/media/styles.css": "/Marcins-Movie-Proj/static/media/projector-1.98558989.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ba987069.js",
+    "static/css/2.d9ad5f5c.chunk.css",
+    "static/js/2.f9c66a23.chunk.js",
+    "static/css/main.02dacecc.chunk.css",
+    "static/js/main.8a5e6061.chunk.js"
+  ]
+}
